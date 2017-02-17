@@ -13,18 +13,15 @@ namespace Omnipay\AlliedWallet\Message;
  * This was supplied to me in a skype chat from one of the Allied Wallet techs.  It is
  * not contained in their 1.0.3 API documentation PDF.
  *
- * Caveat: At the time of coding, this API was not finalised.  Things may change.  Consider
- * this dev quality only.
- *
  * #### To Create a Token
  *
- * First API request to create a Token,  merchants/{merchantId}/creditcardtokens
+ * First API request to create a Token,  merchants/{merchantId}/customertokens
  *
  * This is the JSON request,
  *
  * <code>
  * {
- *   "number": 1,
+ *   "cardNumber": 1,
  *   "expirationMonth": 2,
  *   "expirationYear": 3,
  *   "nameOnCard": "sample string 4",
@@ -121,7 +118,7 @@ namespace Omnipay\AlliedWallet\Message;
  */
 class CreateCardRequest extends AbstractRequest
 {
-    protected $action    = 'creditcardtokens';
+    protected $action    = 'customertokens';
 
     public function getData()
     {
@@ -154,7 +151,7 @@ class CreateCardRequest extends AbstractRequest
         $data['email']                  = $this->getCard()->getEmail();
 
         // Card Parameters
-        $data['number']                 = $this->getCard()->getNumber();
+        $data['cardNumber']             = $this->getCard()->getNumber();
         $data['NameOnCard']             = $this->getCard()->getName();
         $data['ExpirationMonth']        = $this->getCard()->getExpiryMonth();
         $data['ExpirationYear']         = $this->getCard()->getExpiryYear();
