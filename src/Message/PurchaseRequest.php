@@ -159,6 +159,7 @@ class PurchaseRequest extends AbstractRequest
                 $data['tokenId']                = $token;
 
                 // Card token payments use a different endpoint to card payments.
+                $data['IsInitialForRecurring']  = 'false';
                 $this->action                   = 'tokensaletransactions';
             } else {
                 // Card payments
