@@ -1,5 +1,5 @@
 {
-    "name": "incube8/omnipay-alliedwallet",
+    "name": "awolacademy/omnipay-alliedwallet",
     "type": "library",
     "description": "Allied Wallet driver for the Omnipay payment processing library",
     "keywords": [
@@ -10,7 +10,7 @@
         "payment",
         "alliedwallet"
     ],
-    "homepage": "https://github.com/incube8/omnipay-alliedwallet",
+    "homepage": "https://github.com/awolacademy/omnipay-alliedwallet",
     "license": "MIT",
     "authors": [
         {
