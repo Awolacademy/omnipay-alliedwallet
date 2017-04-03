@@ -159,6 +159,17 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         try {
             return $this->response = new Response($this, $httpResponse->json());
         } catch(\Guzzle\Common\Exception\RuntimeException $e) {
+            if ($httpResponse->getStatusCode() == 411) {
+                if (function_exists('log_message')) {
+                    try {
+                        log_message('system', 'Allied Wallet returning a 411 error, possible incorrect configuration or authentication token.');
+                    } catch(Exception $e) {}
+                }
+                throw new InvalidResponseException(
+                    'Merchant returning error, result of a possible incorrect configuration or authentication token.',
+                    $e->getCode()
+                );
+            }
             if (function_exists('log_message')) {
                 try {
                     log_message('system', 'Error communicating with payment gateway: ' . (string) $httpResponse->getBody());
